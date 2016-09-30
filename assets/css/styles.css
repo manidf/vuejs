@@ -16,11 +16,13 @@
 
  .logo {
      background: url(../img/viewjs.png);
-    text-indent: -99999px;
     height: 42px;
-    width: 130px;
+    width: 190px;
+    padding: 10px 0 10px 40px;
     background-size: contain;
+    background-position: center left;
     background-repeat: no-repeat;
+    font-size: 1em;
  }
 
  .error {
@@ -28,7 +30,14 @@
  }
 
  pre {
-     background: #eee ;
+     display: block;
+     background: #000;
+     padding: 10px;
+     color: greenyellow;
+     text-align: left;
+     word-wrap: normal;
+     white-space: inherit;
+     border-radius: 3px;
  }
 
 .demo-ribbon {
