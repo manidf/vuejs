@@ -25,6 +25,17 @@
     font-size: 1em;
  }
 
+.plan-row {
+  font-size: 1.4em;
+  padding: 10px; 
+  background-color: #eee;
+  border-bottom: 1px solid #FFF;
+  overflow: hidden;
+}
+
+.plan-row button {
+  float: right;
+}
  .error {
      color: red;
  }
@@ -36,7 +47,7 @@
      color: greenyellow;
      text-align: left;
      word-wrap: normal;
-     white-space: inherit;
+     white-space: pre;
      border-radius: 3px;
  }
 

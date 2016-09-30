@@ -76,16 +76,30 @@
                 <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
                 <div class="demo-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
                     <div class="demo-crumbs mdl-color-text--grey-500">
-                        Home &gt; Event handling
+                        Home &gt; Subscription Plans
                     </div>
-                   
+                
                     <div id="app">
-                        <h1>message sent!</h1>
+                        <h3> Plans </h3>
+                        
+                        <!-- this is a for loop, through an array of plans -->
+                        <div v-for="plan in plans" >
+                            <plan :plan="plan" />
+                        </div>
+
+                        <template id="plan-template">
+                            <div class="plan-row">
+                                <span class="Plan_name">{{ plan.name }}</span>
+                                <span class="Plan_price">{{ plan.price }}/month</span>
+                                <button @click="setActivePlan" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">Upgrade</button>
+                            </div>
+                        </template>
+                        
                         <pre>
                             {{ $data | json }} <!-- data refers to model of this vue instance-->
                         </pre>
                     </div>
-
+                   
                 </div>
             </div>
     </div>
@@ -101,7 +115,7 @@
     </main>
     </div>
     <script src="https://code.getmdl.io/1.2.1/material.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.4/vue.js" integrity="sha256-txnZO98uNopdq175T86I2GKkkDURF4O/UFncPHrdCJs=" crossorigin="anonymous"></script>
     <script src="app.js"></script>
 </body>
 </html>
