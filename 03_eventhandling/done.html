@@ -79,36 +79,14 @@
                         Home &gt; Event handling
                     </div>
                    
-                    
                     <div id="app">
-
-                        <h3>Form example</h3>
-                        <!-- form action="done.html" v-on:submit.prevent="handleIt" -->
-                        <!-- form action="done.html" v-on:submit.stop="handleIt" -->
-                        <form action="done.html" @submit="handleIt">
-                            <!-- event modifier attached to handleIt method -->
-
-                            <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
-                                Send Message
-                            </button>
-                        </form>
+                        <h1>message sent!</h1>
                         <pre>
                             {{ $data | json }} <!-- data refers to model of this vue instance-->
                         </pre>
                     </div>
 
-                    <div id="counter">
-                        <h3>Counter example</h3>
-                        <button @click="updateCount" type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
-                                Add to cart
-                        </button>
-                        <div class="material-icons mdl-badge mdl-badge--overlap" data-badge="{{ count }}">account_box</div>
-                        <pre>
-                            {{ $data | json }} <!-- data refers to model of this vue instance-->
-                        </pre>
-                    </div>
                 </div>
-
             </div>
     </div>
     <footer class="demo-footer mdl-mini-footer">
