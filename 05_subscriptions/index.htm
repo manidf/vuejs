@@ -84,14 +84,25 @@
                         
                         <!-- this is a for loop, through an array of plans -->
                         <div v-for="plan in plans" >
-                            <plan :plan="plan" />
+                            <plan :plan="plan" :active.sync="active" />
                         </div>
 
                         <template id="plan-template">
                             <div class="plan-row">
-                                <span class="Plan_name">{{ plan.name }}</span>
-                                <span class="Plan_price">{{ plan.price }}/month</span>
-                                <button @click="setActivePlan" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">Upgrade</button>
+                                <span class="Plan_name {{ plan.active }}">{{ plan.name }}</span>
+                                <span class="Plan_price {{ plan.active }}">{{ plan.price }} / month</span>
+                                <button
+                                    @click="setActivePlan"
+                                    v-show="plan.name !== active.name"
+                                    class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
+                                 {{ isUgrade ? 'Upgrade' : 'Downgrade' }}
+                                </button>
+                                <button 
+                                    v-else 
+                                    class="mdl-button mdl-js-button"
+                                    disabled>
+                                    SELECTED
+                                </button>
                             </div>
                         </template>
                         

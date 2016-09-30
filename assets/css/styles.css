@@ -26,7 +26,7 @@
  }
 
 .plan-row {
-  font-size: 1.4em;
+  font-size: 0.9em;
   padding: 10px; 
   background-color: #eee;
   border-bottom: 1px solid #FFF;
@@ -35,6 +35,7 @@
 
 .plan-row button {
   float: right;
+  font-size: 0.9em;
 }
  .error {
      color: red;
