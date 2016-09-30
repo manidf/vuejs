@@ -14,6 +14,23 @@
  * limitations under the License.
  */
 
+ .logo {
+     background: url(../img/viewjs.png);
+    text-indent: -99999px;
+    height: 42px;
+    width: 130px;
+    background-size: contain;
+    background-repeat: no-repeat;
+ }
+
+ .error {
+     color: red;
+ }
+
+ pre {
+     background: #eee ;
+ }
+
 .demo-ribbon {
   width: 100%;
   height: 40vh;
@@ -21,6 +38,10 @@
   -webkit-flex-shrink: 0;
       -ms-flex-negative: 0;
           flex-shrink: 0;
+}
+
+.demo-crumbs {
+    margin: 0 0 2em 0;
 }
 
 .demo-main {

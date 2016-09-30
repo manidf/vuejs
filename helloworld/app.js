@@ -1,12 +1,12 @@
 
 new Vue({
-    el: '#app',
+    el: '#app', // bind to element in html
     data: {
-        message: 'Hello Vue.js'
+        message: 'Hello World!'
     }
 });
 
-new Vue({
+new Vue({ // view model
     el: '#todoApp',
     data: {
         todos: [
