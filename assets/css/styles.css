@@ -41,6 +41,10 @@
      color: red;
  }
 
+ .completed {
+   text-decoration: line-through;
+ }
+
  pre {
      display: block;
      background: #000;
