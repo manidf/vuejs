@@ -82,17 +82,23 @@
                     <div id="counter">
                         <h3>Components</h3>
                         
-                        <my-counter> </my-counter>
-                        <my-counter> </my-counter>
-                        <my-counter> </my-counter>
+                         <!-- pass unique data from outside using properties -->
+                        <my-counter
+                            subject="likes"
+                            >
+                        </my-counter>
+                        
+                        <my-counter
+                            subject="dislikes"
+                            >
+                        </my-counter>
 
                         <template id="counter-template">
-                            <h6>Click to like this post</h4>
                              <button 
                                 @click="count += 1" 
                                 type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"
                                 >
-                                Like
+                                {{ subject }}
                             </button>
                             <div 
                                 data-badge="{{ count }}" 
