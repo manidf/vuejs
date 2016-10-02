@@ -76,42 +76,31 @@
                 <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
                 <div class="demo-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
                     <div class="demo-crumbs mdl-color-text--grey-500">
-                        <a href="/">Home</a> &gt; Subscription Plans
+                        <a href="/">Home</a> &gt; A look at components
                     </div>
                 
-                    <div id="app">
-                        <h3> Plans </h3>
-                        
-                        <!-- this is a for loop, through an array of plans -->
-                        <div v-for="plan in plans" >
-                            <plan :plan="plan" :active.sync="active" />
-                        </div>
+                    <div id="counter">
+                        <h3>Components</h3>
+                        <button @click="updateCount" 
+                                type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"
+                                >
+                               Likes
+                        </button>
+                        <div data-badge="{{ count }}" class="material-icons mdl-badge mdl-badge--overlap">count</div>
 
-                        <template id="plan-template">
-                            <div class="plan-row">
-                                <span class="Plan_name {{ plan.active }}">{{ plan.name }}</span>
-                                <span class="Plan_price {{ plan.active }}">{{ plan.price }} / month</span>
-                                <button
-                                    @click="setActivePlan"
-                                    v-show="plan.name !== active.name"
-                                    class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
-                                 {{ isUgrade ? 'Upgrade' : 'Downgrade' }}
-                                </button>
-                                <button 
-                                    v-else 
-                                    class="mdl-button mdl-js-button"
-                                    disabled>
-                                    SELECTED
-                                </button>
-                            </div>
-                        </template>
-                        
+                        <button @click="updateCount" 
+                                type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"
+                                >
+                                Dislikes
+                        </button>
+                        <div data-badge="{{ count }}" class="material-icons mdl-badge mdl-badge--overlap">count</div>
+
                         <pre>
                             {{ $data | json }} <!-- data refers to model of this vue instance-->
                         </pre>
                     </div>
-                   
                 </div>
+
             </div>
     </div>
     <footer class="demo-footer mdl-mini-footer">
@@ -126,7 +115,7 @@
     </main>
     </div>
     <script src="https://code.getmdl.io/1.2.1/material.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.4/vue.js" integrity="sha256-txnZO98uNopdq175T86I2GKkkDURF4O/UFncPHrdCJs=" crossorigin="anonymous"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js"></script>
     <script src="app.js"></script>
 </body>
 </html>
