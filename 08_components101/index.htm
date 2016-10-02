@@ -81,29 +81,34 @@
                 
                     <div id="app">
                         <h3> Components 101 </h3>
+                        <!-- Render a taks list here using the reusable vue componet/template beneath it. -->
+                        <my-tasks :list="tasks"> </my-tasks>
+                        <!-- always bind / declare the property (:list) with the a colons which signifies that this is a 'vue' property otherwise it will output a string value and not the actual data -->
+                    </div>
+                    <!-- Declare template with a unique ID -->
+                    <template id="tasks-template">
                         <ul>
-                            <!--<li :class="['completed', someThing ? 'truthy' : '']" v-for="task in tasks"> {{ task.body }}</li>-->
                             <li :class="{ 'completed' : task.completed }" 
-                                v-for="task in tasks"
-                                @click="toggleCompletedFor(task)"> {{ task.body }}</li>
+                                v-for="tasks in list"
+                                @click="task.completed = ! task.completed"
+                                >
+                                {{ task.body }}
+                            </li>
                         </ul>
                         <pre>
                             {{ $data | json }} <!-- data refers to model of this vue instance-->
                         </pre>
-                    </div>
-                   
+                    </template>
                 </div>
             </div>
+            <footer class="demo-footer mdl-mini-footer">
+            <div class="mdl-mini-footer--left-section">
+                <ul class="mdl-mini-footer--link-list">
+                    <li><a href="http://themwebs.me/about-me/" targer="_blank">Built by Mannuel Ferreira</a></li>
+                </ul>
+            </div>
+        </footer>
     </div>
-    <footer class="demo-footer mdl-mini-footer">
-        <div class="mdl-mini-footer--left-section">
-            <ul class="mdl-mini-footer--link-list">
-                <li><a href="#">Help</a></li>
-                <li><a href="#">Privacy and Terms</a></li>
-                <li><a href="#">User Agreement</a></li>
-            </ul>
-        </div>
-    </footer>
     </main>
     </div>
     <script src="https://code.getmdl.io/1.2.1/material.min.js"></script>

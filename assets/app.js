@@ -11,7 +11,7 @@ new Vue({
             { name: '05. Computed Properties', path: '/05_computedproperties'},
             { name: '06. Subscriptions', path: '/06_subscriptions'},
             { name: '07. Lists', path: '/07_lists'},
-            { name: '08. Components101', path: '/08_components101'},
+            { name: '08. Components 101', path: '/08_components101'},
         ]
     }
 });
