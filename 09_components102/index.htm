@@ -47,7 +47,6 @@
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.teal-red.min.css">
     <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.blue-green.min.css" />
 
     <link rel="stylesheet" href="../assets/css/styles.css">
@@ -84,21 +83,30 @@
                         <tasks :list="tasks"> </tasks>
                     </div>
                     <template id="tasks-template">
-                        <h6>Tasks remaining:<div 
-                                data-badge="{{remaining}}" 
-                                class="material-icons mdl-badge mdl-badge--overlap"
-                                >
-                                0
-                            </div>
+                        <h6>Tasks remaining:
+                            <div 
+                            data-badge="{{remaining}}"
+                            v-show="remaining" 
+                            class="material-icons mdl-badge mdl-badge--overlap"
+                            >
+                            0
+                            </div>  
                         </h6>
-                        <ul>
+                        <ul v-show="list.length">
                             <li :class="{ 'completed' : task.completed }" 
                                 v-for="task in list"
                                 @click="task.completed = ! task.completed"
                                 >
                                 {{ task.body }}
+
+                                <i @click="deleteTask(task)">X</i>
                             </li>
                         </ul>
+                        <p v-else>No tasks to show.</p>
+                        <button
+                            @click="clearCompleted"
+                            class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored"
+                        >Clear Completed</button>
                         <pre>
                             {{ $data | json }}
                         </pre>
