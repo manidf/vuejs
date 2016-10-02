@@ -1,21 +1,28 @@
 
 
 Vue.component('my-counter', {
-    template: '<h1> hello worldgi</h1>'
+    template: '#counter-template',
+
+    // return a function, does not work the same as a normal vue root instance.
+    data: function () {
+        return {
+            count: 0 
+        };
+    } 
 });
 
 new Vue({
 
     el: '#counter',
 
-    data: {
-        count: 0
-    },
+    // data: {
+    //     count: 0
+    // },
 
-    methods: {
-        updateCount: function () {
-            this.count += 1;
-        }
-    }
+    // methods: {
+    //     updateCount: function () {
+    //         this.count += 1;
+    //     }
+    // }
 
 });

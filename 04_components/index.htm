@@ -83,10 +83,28 @@
                         <h3>Components</h3>
                         
                         <my-counter> </my-counter>
+                        <my-counter> </my-counter>
+                        <my-counter> </my-counter>
 
-                        <pre>
-                            {{ $data | json }} <!-- data refers to model of this vue instance-->
-                        </pre>
+                        <template id="counter-template">
+                            <h6>Click to like this post</h4>
+                             <button 
+                                @click="count += 1" 
+                                type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"
+                                >
+                                Like
+                            </button>
+                            <div 
+                                data-badge="{{ count }}" 
+                                class="material-icons mdl-badge mdl-badge--overlap"
+                                >
+                                0
+                            </div>
+                             <pre>
+                                {{ $data | json }} <!-- data refers to model of this vue instance-->
+                            </pre>
+                        </template>
+                       
                     </div>
                 </div>
 
