@@ -1,15 +1,7 @@
 
-new Vue({
-    
-    el: '#app', // bind to element in html
-    
-    methods: {
-        handleIt: function () { // any method needs to nested within a methods object
-            console.log('Handled');
-            alert('handled');
-        }
-    }
-    
+
+Vue.component('my-counter', {
+    template: '<h1> hello worldgi</h1>'
 });
 
 new Vue({

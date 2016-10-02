@@ -81,19 +81,8 @@
                 
                     <div id="counter">
                         <h3>Components</h3>
-                        <button @click="updateCount" 
-                                type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"
-                                >
-                               Likes
-                        </button>
-                        <div data-badge="{{ count }}" class="material-icons mdl-badge mdl-badge--overlap">count</div>
-
-                        <button @click="updateCount" 
-                                type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"
-                                >
-                                Dislikes
-                        </button>
-                        <div data-badge="{{ count }}" class="material-icons mdl-badge mdl-badge--overlap">count</div>
+                        
+                        <my-counter> </my-counter>
 
                         <pre>
                             {{ $data | json }} <!-- data refers to model of this vue instance-->
