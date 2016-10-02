@@ -81,9 +81,16 @@
                 
                     <div id="app">
                         <h3> Components 102 </h3>
-                        <my-tasks :list="tasks"> </my-tasks>
+                        <tasks :list="tasks"> </tasks>
                     </div>
                     <template id="tasks-template">
+                        <h6>Tasks remaining:<div 
+                                data-badge="{{remaining}}" 
+                                class="material-icons mdl-badge mdl-badge--overlap"
+                                >
+                                0
+                            </div>
+                        </h6>
                         <ul>
                             <li :class="{ 'completed' : task.completed }" 
                                 v-for="task in list"
@@ -99,12 +106,12 @@
                 </div>
             </div>
             <footer class="demo-footer mdl-mini-footer">
-            <div class="mdl-mini-footer--left-section">
-                <ul class="mdl-mini-footer--link-list">
-                    <li><a href="http://themwebs.me/about-me/" targer="_blank">Built by Mannuel Ferreira</a></li>
-                </ul>
-            </div>
-        </footer>
+                <div class="mdl-mini-footer--left-section">
+                    <ul class="mdl-mini-footer--link-list">
+                        <li><a href="https://twitter.com/manidf" targer="_blank">About me</a></li>
+                    </ul>
+                </div>
+            </footer>
     </div>
     </main>
     </div>
