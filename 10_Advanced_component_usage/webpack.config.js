@@ -1,8 +1,9 @@
 var path = require('path')
 var webpack = require('webpack')
+var srcEntry = './src/main.js'
 
 module.exports = {
-  entry: './src/main.js',
+  entry: srcEntry,
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: '/dist/',
@@ -12,14 +13,14 @@ module.exports = {
     rules: [
       {
         test: /\.vue$/,
-        loader: 'vue',
+        loader: 'vue-loader',
         options: {
           // vue-loader options go here
         }
       },
       {
         test: /\.js$/,
-        loader: 'babel',
+        loader: 'babel-loader',
         exclude: /node_modules/
       },
       {
