@@ -1,0 +1,40 @@
+<html>
+
+<head>
+    <title>Notebook</title>
+    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.18.1/build/cssnormalize/cssnormalize-min.css">
+    <!-- Icons & Stylesheets -->
+    <link href="https://fonts.googleapis.com/icon?                   
+      family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+    <!-- Include the library in the page -->
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <!-- Add the marked library: -->
+    <script src="https://unpkg.com/marked"></script>
+</head>
+
+<body>
+    <!-- Include the library in the page -->
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+
+    <!-- Notebook app -->
+    <div id="notebook">
+
+        <!-- Main pane -->
+        <section class="main">
+            <section class="main">
+                <textarea v-model="content"></textarea>
+            </section>
+        </section>
+
+        <aside class="preview" v-html="notePreview">
+            {{ notePreview }}
+        </aside>
+
+    </div>
+
+    <!-- Some JavaScript -->
+    <script src="app.js"></script>
+</body>
+
+</html>
