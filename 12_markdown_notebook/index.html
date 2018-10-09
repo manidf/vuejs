@@ -4,8 +4,7 @@
     <title>Notebook</title>
     <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.18.1/build/cssnormalize/cssnormalize-min.css">
     <!-- Icons & Stylesheets -->
-    <link href="https://fonts.googleapis.com/icon?                   
-      family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="style.css" />
     <!-- Include the library in the page -->
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
@@ -25,6 +24,15 @@
             <section class="main">
                 <textarea v-model="content"></textarea>
             </section>
+            <aside class="side-bar">
+                <!-- Toolbar -->
+                <div class="toolbar">
+                    <!-- Add note button -->
+                    <button @:click="addNote">
+                        <i class="material-icons">add</i> Add note
+                    </button>
+                </div>
+            </aside>
         </section>
 
         <aside class="preview" v-html="notePreview">
