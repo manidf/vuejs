@@ -7,9 +7,9 @@ new Vue({
     data() {
         return {
             content: localStorage.getItem('content') || 'You can write in **markdown**',
-            notes: [],
+            notes: JSON.parse(localStorage.getItem('notes')) || [],
             items: [],
-            selectedId: null
+            selectedId: localStorage.getItem('selected-id') || null
         }
     },
     created() {
@@ -30,11 +30,19 @@ new Vue({
         }
     },
     watch: {
-        // Watching content data property
-        content: {
-            handler: 'saveNote'
+        notes: {
+            // We need this to watch each note's properties inside the array
+            handler: 'saveNotes',
+            deep: true
         },
-        immediate: true
+        content: {
+            // Watching content data property
+            handler: 'saveNote',
+            immediate: true
+        },
+        selectedId(val) {
+            localStorage.setItem('selected-id', val)
+        }
     },
     methods: {
         saveNote(val) {
@@ -60,6 +68,11 @@ new Vue({
         },
         selectNote(note) {
             this.selectedId = note.id
+        },
+        saveNotes() {
+            // convert to JSON before storing
+            localStorage.setItem('notes', JSON.stringify(this.notes))
+            console.log('Notes saved!', new Date())
         }
     }
 })
