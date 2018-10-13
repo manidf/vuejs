@@ -15,32 +15,33 @@
 <body>
     <!-- Include the library in the page -->
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
-
     <!-- Notebook app -->
     <div id="notebook">
-
+        <aside class="side-bar">
+            <!-- Toolbar -->
+            <div class="toolbar">
+                <!-- Add note button -->
+                <button v-on:click="addNote" :title="addButtonTitle">
+                    <i class="material-icons">add</i> Add note
+                </button>
+            </div>
+            <div class="notes">
+                <!-- Note list here -->
+                <div class="items" v-for="note of notes">
+                    {{ note.title }}
+                </div>
+            </div>
+        </aside>
         <!-- Main pane -->
         <section class="main">
             <section class="main">
                 <textarea v-model="content"></textarea>
             </section>
-            <aside class="side-bar">
-                <!-- Toolbar -->
-                <div class="toolbar">
-                    <!-- Add note button -->
-                    <button @:click="addNote">
-                        <i class="material-icons">add</i> Add note
-                    </button>
-                </div>
-            </aside>
         </section>
-
         <aside class="preview" v-html="notePreview">
             {{ notePreview }}
         </aside>
-
     </div>
-
     <!-- Some JavaScript -->
     <script src="app.js"></script>
 </body>
