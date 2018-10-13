@@ -27,7 +27,8 @@
             </div>
             <div class="notes">
                 <!-- Note list here -->
-                <div class="items" v-for="note of notes">
+                <div class="items" v-for="note of notes"
+                    @click="selectNote(note)">
                     {{ note.title }}
                 </div>
             </div>
