@@ -2,19 +2,14 @@
 
 <head>
     <title>Notebook</title>
-    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.18.1/build/cssnormalize/cssnormalize-min.css">
-    <!-- Icons & Stylesheets -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="style.css" />
-    <!-- Include the library in the page -->
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
-    <!-- Add the marked library: -->
     <script src="https://unpkg.com/marked"></script>
+    <script src="https://unpkg.com/moment"></script>
 </head>
 
 <body>
-    <!-- Include the library in the page -->
-    <script src="https://unpkg.com/vue/dist/vue.js"></script>
     <!-- Notebook app -->
     <div id="notebook">
         <aside class="side-bar">
@@ -28,10 +23,11 @@
             <div class="notes">
                 <!-- Note list here -->
                 <div class="note" 
-                    v-for="note of notes" 
+                    v-for="note of sortedNotes" 
                     @click="selectNote(note)" 
                     :class="{selected: note === selectedNote}"
                     >
+                    <i class="icon material-icons" v-if="note.favorite">star</i>
                     {{note.title}}
                 </div>
             </div>
@@ -43,10 +39,22 @@
                     <div class="toolbar">
                         <!-- Our toolbar is here! -->
                         <input v-model="selectedNote.title" placeholder="Note Title" type="text">
-                        <button @click="removeNote" title="Remove note"><i        
-                            class="material-icons">delete</i></button>
+                        <button @click="removeNote" title="Remove note">
+                            <i class="material-icons">
+                                delete
+                            </i>
+                        </button>
+                        <button @click="favoriteNote" title="Favorite note"><i        
+                            class="material-icons">{{ selectedNote.favorite ? 'star' :               
+                            'star_border' }}</i></button>
                     </div>
                     <textarea v-model="selectedNote.content"></textarea>
+                    <div class="toolbar status-bar">
+                        <span class="date">
+                            <span class="label">Created</span>
+                            <span class="value">{{ selectedNote.created | date }}</span>
+                        </span>
+                    </div>
                 </section>
             </section>
             <!-- Preview pane -->

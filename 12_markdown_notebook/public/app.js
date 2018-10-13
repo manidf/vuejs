@@ -2,6 +2,9 @@ console.log('app started')
 
 const html = marked('***BOld** *Italic* [link](http://themwebs.me)')
 
+Vue.filter('date', time => moment(time)
+.format('DD/MM/YY, HH:mm'))
+
 new Vue({
     el: '#notebook',
     data() {
@@ -27,6 +30,13 @@ new Vue({
         selectedNote() {
             // return the matching note with selectedId
             return this.notes.find(note => note.id === this.selectedId)
+        },
+        sortedNotes () {
+            return this.notes.slice()
+              .sort((a, b) => a.created - b.created)
+              .sort((a, b) => (a.favorite === b.favorite)? 0
+                : a.favorite? -1    
+                : 1)
         }
     },
     watch: {
@@ -82,6 +92,9 @@ new Vue({
                   this.notes.splice(index, 1)
                 }
               }
+        },
+        favoriteNote() {
+            this.selectedNote.favoriteNote ^= true
         }
     }
 })
