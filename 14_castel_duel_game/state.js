@@ -20,5 +20,8 @@ var state = {
       name: 'Sally Soap'
     }    
   ],
+
+  testHand: [],
+  
   currentPlayerIndex: Math.round(Math.random())
 }
