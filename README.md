@@ -1,8 +1,14 @@
 # Vuejs Playground
 
-Run simple python http server to get going
-```
-$ python -m SimpleHTTPServer 8000
+Run simple node http server 
+https://www.npmjs.com/package/http-server
+
+```bash
+$ npm i http-server -g
+
+then
+
+$ http-server .
 ```
 
 > then navigation to http://localhost:8000 in the browser.
