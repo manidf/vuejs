@@ -11,39 +11,35 @@ export default new Vuex.Store({
         products: []
     },
 
-    getters: { // computed properties
-        // similar as computed properties
-        availableProducts (state, getters) {
+    getters: { // computed properties        
+        availableProducts (state, getters) { // similar as computed properties
             return state.products.filter(product => product.inventory > 0)
         }
     },
 
     actions: { // api calls
-        fetchProducts (context) {
-            // run setProducts mutation, be simple as possible, actions never update state directly
-            shop.getProducts(products => {
-
-                // commit the mutation using mutation fn name, and the payload
-                context.commit('setProducts', products)
-    
-                // BAD never update the state directly like this, rather CALL mutations
-                // store.state.products = products
-            }) 
+        fetchProducts ({context}) { // es6 argument destructuring 
+           return new Promise((resolve, reject) => {                
+                shop.getProducts(products => { // run setProducts mutation, be simple as possible, actions never update state directly          
+                    context.commit('setProducts', products) // commit the mutation using mutation fn name, and the payload                    
+                    // store.state.products = products // BAD never update the state directly like this, rather CALL mutations
+                    resolve()
+                })
+           })
         },
 
-        addToCart () {
-            if (products.inventory > 0) {
-                context.commit('pushProductToCart', product)
-            } else {
-                /// show out of stock message
-            }
-        }
+        // addToCart () {
+        //     if (products.inventory > 0) {
+        //         context.commit('pushProductToCart', product)
+        //     } else {
+        //         /// show out of stock message
+        //     }
+        // }
     },
 
     mutations: { // update the state, single state changes, updating/setting products array
-        setProducts (state, products) {
-            // update state/product
-            state.products = products
+        setProducts (state, products) {            
+            state.products = products // update state/product
         }
     }
 })
