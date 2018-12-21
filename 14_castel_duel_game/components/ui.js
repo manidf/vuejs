@@ -11,7 +11,6 @@ Vue.component('top-bar', {
     props: ['players', 'currentPlayerIndex', 'turn'],
 
     created() {
-        console.log(this.players)
     }
 })
 
@@ -30,7 +29,6 @@ Vue.component('card', {
 
     methods: {
         play() {
-            console.log('play method')
             this.$emit('play')
         }
     }
@@ -39,10 +37,19 @@ Vue.component('card', {
 Vue.component('hand', {
     props: ['cards'],
     template: `<div class="hand">
-              <div class="wrapper">
-                <!-- Cards -->
-                <card v-for="card of cards" :def="card.def" />
-              </div>
+                <div class="wrapper">
+                    <!-- Cards -->
+                    <card 
+                        v-for="card of cards" 
+                        :def="card.def"
+                        :key="card.uid"
+                        @play="handlePlay(card)" />
+                </div>
             </div>`,
-    methods: {}
+    methods: {
+        handlePlay(card) {
+            console.log('ui.card.handleplay')
+            this.$emit('card-play', card)
+        }
+    }
 })

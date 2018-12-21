@@ -5,7 +5,6 @@ new Vue({
     data: state,
 
     mounted () {
-        console.log(this.$data === state)
     },
 
     created () {
@@ -17,8 +16,12 @@ new Vue({
         :current-player-index="currentPlayerIndex" 
         :players="players" 
         />
-       <hand :cards="testHand" />
-
+        <transition name="hand">
+            <hand 
+                v-if="!activeOverlay"
+                :cards="testHand"
+                @card-play="testPlayCard" />
+        </transition>
     </div>`,
 
     computed: {
@@ -28,7 +31,11 @@ new Vue({
     },
 
     methods: {
-        handlePlay (color, number) {            
+        testPlayCard(card) {
+            const index = this.testHand.indexOf(card)
+            this.testHand.splice(index, 1)
+        },
+        handlePlay () {            
             this.$on('play', () => { // listen to an event
                 console.log('Caught a play event')
             })
@@ -39,7 +46,6 @@ new Vue({
             for (let i = 0; i < 5; i++) { // Draw 5 cards
                 cards.push(this.testDrawCard())
             }
-            console.log(cards);
             return cards
         },
         testDrawCard() {            
