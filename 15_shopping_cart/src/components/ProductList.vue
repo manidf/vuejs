@@ -7,7 +7,13 @@
             >
         <ul v-else>
             <li v-for="product in products" :key=product.id>
-                {{ product.title }} - {{ product.price }}
+
+                {{ product.title }} - {{ product.price }} <br>
+
+                <button @click="addProductToCart(product)">
+                    Add to cart
+                </button>
+
             </li>
         </ul>
     </div>    
@@ -15,7 +21,7 @@
 
 <script>
 export default {
-    data () { // Don't need the data anymore as it is now stored in the Store
+    data () {
         return {
             loading: false
         }
@@ -24,24 +30,20 @@ export default {
     computed: {
         products () {
             return this.$store.getters.availableProducts
-            // generic return all
-            // return store.state.products
         }
     },
 
-    method: {
+    methods: {
         addProductToCart (product) {
-            this.$store.dispatch('addProductTCart', product)
+            this.$store.dispatch('addProductToCart', product)
         }
     },
 
     created() {
         this.loading = true //set loading to true until promise is resolved
-        // call the store dispatch action, decouple components from the api logic
-        this.$store.dispatch('fetchProducts')
+        this.$store.dispatch('fetchProducts') // call the store dispatch action, decouple components from the api logic
             .then(() => this.loading = false) //set to false when promise resolved
     }
-
 }
 </script>
 

@@ -29,9 +29,9 @@ export default new Vuex.Store({
            })
         },
 
-        addProductToCart (context, product) {
-            const cartItem = context.state.cart.find(item => item.id === product.id)
-            if (product.inventory > 0) {                
+        addProductToCart (context, product) { // responsible for the logic
+            if (product.inventory > 0) {               
+                const cartItem = context.state.cart.find(item => item.id === product.id)
                 if ( !cartItem) {
                     context.commit('pushProductToCart', product.id)            
                 } else {
@@ -42,7 +42,7 @@ export default new Vuex.Store({
         }
     },
 
-    mutations: {
+    mutations: { // responsible for the state change
         setProducts (state, products) { // update the state, single state changes, updating/setting products array
             state.products = products // update state/product
         },
@@ -66,3 +66,4 @@ export default new Vuex.Store({
 })
 
 // actions decide when a mutation should fire
+// if you dont commit the mutations you lose benefit of tracking state changes.
