@@ -15,7 +15,19 @@ export default new Vuex.Store({
     getters: { // computed properties        
         availableProducts (state, getters) { // similar as computed properties
             return state.products.filter(product => product.inventory > 0)
+        },
+
+        cartProducts (state) {
+            return state.cart.map(cartItem => {
+                const product = state.products.find(product => product.id === cartItem.id)
+                return {
+                    title: product.title,
+                    price: product.price,
+                    quantity: cartItem.quantity
+                }
+            })
         }
+
     },
 
     actions: { // api calls
