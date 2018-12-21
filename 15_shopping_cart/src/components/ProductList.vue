@@ -14,8 +14,6 @@
 </template>
 
 <script>
-import store from '@/store/index'
-
 export default {
     data () { // Don't need the data anymore as it is now stored in the Store
         return {
@@ -25,7 +23,7 @@ export default {
 
     computed: {
         products () {
-            return store.getters.availableProducts
+            return this.$store.getters.availableProducts
             // generic return all
             // return store.state.products
         }
@@ -34,7 +32,7 @@ export default {
     created() {
         this.loading = true //set loading to true until promise is resolved
         // call the store dispatch action, decouple components from the api logic
-        store.dispatch('fetchProducts')
+        this.$store.dispatch('fetchProducts')
             .then(() => this.loading = false) //set to false when promise resolved
     }
 

@@ -18,12 +18,12 @@ export default new Vuex.Store({
     },
 
     actions: { // api calls
-        fetchProducts ({context}) { // es6 argument destructuring 
-           return new Promise((resolve, reject) => {                
-                shop.getProducts(products => { // run setProducts mutation, be simple as possible, actions never update state directly          
-                    context.commit('setProducts', products) // commit the mutation using mutation fn name, and the payload                    
-                    // store.state.products = products // BAD never update the state directly like this, rather CALL mutations
+        fetchProducts ({commit}) { // es6 argument destructuring 
+           return new Promise((resolve, reject) => {
+               shop.getProducts(products => { // run setProducts mutation, be simple as possible, actions never update state directly          
+                    commit('setProducts', products) // commit the mutation using mutation fn name, and the payload                    
                     resolve()
+                    // store.state.products = products // BAD never update the state directly like this, rather CALL mutations
                 })
            })
         },
@@ -43,3 +43,5 @@ export default new Vuex.Store({
         }
     }
 })
+
+// actions decide when a mutation should fire
