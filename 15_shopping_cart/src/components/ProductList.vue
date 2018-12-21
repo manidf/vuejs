@@ -29,6 +29,12 @@ export default {
         }
     },
 
+    method: {
+        addProductToCart (product) {
+            this.$store.dispatch('addProductTCart', product)
+        }
+    },
+
     created() {
         this.loading = true //set loading to true until promise is resolved
         // call the store dispatch action, decouple components from the api logic

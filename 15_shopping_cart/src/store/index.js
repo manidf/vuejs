@@ -8,7 +8,8 @@ Vue.use(Vuex)
 // 5 options, state, mutations, getters, actions, modules
 export default new Vuex.Store({
     state: { // data
-        products: []
+        products: [],
+        cart: [] // add cart array to state, store objects holding id and the item user wants to buy.
     },
 
     getters: { // computed properties        
@@ -28,19 +29,39 @@ export default new Vuex.Store({
            })
         },
 
-        // addToCart () {
-        //     if (products.inventory > 0) {
-        //         context.commit('pushProductToCart', product)
-        //     } else {
-        //         /// show out of stock message
-        //     }
-        // }
+        addProductToCart (context, product) {
+            const cartItem = context.state.cart.find(item => item.id === product.id)
+            if (product.inventory > 0) {                
+                if ( !cartItem) {
+                    context.commit('pushProductToCart', product.id)            
+                } else {
+                    context.commit('incrementItemQuantity', cartItem)                
+                }
+                context.commit('decrementProductInventory', product)
+            }
+        }
     },
 
-    mutations: { // update the state, single state changes, updating/setting products array
-        setProducts (state, products) {            
+    mutations: {
+        setProducts (state, products) { // update the state, single state changes, updating/setting products array
             state.products = products // update state/product
+        },
+
+        pushProductToCart (state, productId) {
+            state.cart.push({
+                id: productId,
+                quantity: 1
+            })
+        },
+
+        incrementItemQuantity (state, cartItem) {
+            cartItem.quantity++
+        },
+
+        decrementProductInventory (state, product) {
+            product.inventory--
         }
+
     }
 })
 
